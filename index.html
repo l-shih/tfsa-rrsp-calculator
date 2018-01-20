@@ -63,9 +63,50 @@
             
             <div class="col-sm-6 offset-sm-2 blog-sidebar">
                 <div class="sidebar-module sidebar-module-inset">
-                      <div id="calculated-info">
-                        <h4>Plug in some information and let's see how much you can save!</h4>                          
-                      </div>
+                    <div id="calculated-info">
+                        <div class="before"><h4>Plug in some information and let's see how much you can save!</h4></div> 
+                        
+                        <div class="answer">
+                            <p class="rendered-info">The table below shows how your money can grow over time. Hover over the question marks to learn more.</p> 
+                            <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th></th>
+                                <th>TFSA</th>
+                                <th>RRSP</th>
+                              </tr>
+                            </thead>
+                            <tbody class="comparison-table">
+                              <tr>
+                                <th scope="row">Deposit Amt <i class="fa fa-question-circle deposit-amt-explain" title="By depositing money in to an RRSP, you reduce your income to be taxed. This is why your RRSP deposit amount is higher than your TFSA amount"></i> </th>
+                                <td id="tfsa-dep-amt">$ </td>
+                                <td id="rrsp-dep-amt">$ </td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Value after <span id="invest-yrs-ans"></span> years at <span id="invest-rate-ans"></span>% <i class="fa fa-question-circle fv-amt-explain" title="This amount takes in to account the inflation rate, which will reduce your exected investment rate"</i> </th>
+                                <td id="tfsa-fv">$ </td>
+                                <td id="rrsp-fv">$ </td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Tax at withdrawal (est. <span id="withdraw-tax-rate"></span> <i class="fa fa-question-circle fv-tax-amt-explain" title="This only applies to your RRSP amount. Your TFSA amount was already taxed above"></i> </th>
+                                <td>-$ 0</td>
+                                <td id="rrsp-value-final">-$ </td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Total savings</th>
+                                <td id="tfsa-total-save">$ </td>
+                                <td id="rrsp-total-save">$ </td>
+                              </tr>
+                            </tbody>
+                            </table>
+                        </div>                              
+                      
+                    
+                    
+                    
+                    
+                    
+                    </div>
                 </div>
             </div>
         </div>

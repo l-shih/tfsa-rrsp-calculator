@@ -47,6 +47,11 @@ $(function() {
     });
 
     $(".btn").on("click", function() {
+      $(".before").css("display", "none");
+      $(".answer").css("display", "block");
+    })
+
+    $(".btn").on("click", function() {
       var depositAmt = $("#invest-amt").val();
       var investYrs = $("#invest-years").val();
       var investRate = $("#invest-rate").val();
@@ -68,40 +73,17 @@ $(function() {
       if(!depositAmt || !investYrs || !investRate || !inflationRate || !grossIncome || !retireIncome) {
         $("#calculated-info").empty().append(`<h4>Oops, it looks like you're missing some information</h4>`);
       } else {
-        $("#calculated-info").empty().append(`
-          <p class="rendered-info">The table below shows how your money can grow over time. Hover over the question marks to learn more.</p> 
-          <table class="table table-striped">
-          <thead>
-            <tr>
-                <th></th>
-                <th>TFSA</th>
-                <th>RRSP</th>
-            </tr>
-          </thead>
-          <tbody class="comparison-table">
-            <tr>
-              <th scope="row">Deposit Amt <i class="fa fa-question-circle deposit-amt-explain" title="By depositing money in to an RRSP, you reduce your income to be taxed. This is why your RRSP deposit amount is higher than your TFSA amount"></i> </th>
-              <td>$ ${depositAmt}</td>
-              <td>$ ${rrspDeposit.toFixed(2)}</td>
-            </tr>
-            <tr>
-              <th scope="row">Value after ${investYrs} years at ${investRate}% <i class="fa fa-question-circle fv-amt-explain" title="This amount takes in to account the inflation rate, which will reduce your exected investment rate"</i> </th>
-              <td>$ ${futureValueTFSA.toFixed(2)}</td>
-              <td>$ ${futureValueRRSP.toFixed(2)}</td>
-            </tr>
-            <tr>
-              <th scope="row">Tax at withdrawal (est. ${(avgTaxRate * 100).toFixed(2)}%) <i class="fa fa-question-circle fv-tax-amt-explain" title="This only applies to your RRSP amount. Your TFSA amount was already taxed above"></i> </th>
-              <td>-$ 0</td>
-              <td>-$ ${(futureValueRRSP * avgTaxRate).toFixed(2)}</td>
-            </tr>
-            <tr>
-              <th scope="row">Total savings</th>
-              <td>$ ${futureValueTFSA.toFixed(2)}</td>
-              <td>$ ${(futureValueRRSP - (futureValueRRSP * avgTaxRate)).toFixed(2)}</td>
-            </tr>
-          </tbody>
-          </table>
-        `);
+        console.log("OK");
+        $("#invest-yrs-ans").empty().append(`${investYrs}`);
+        $("#invest-rate-ans").empty().append(`${investRate}`);
+        $("#tfsa-dep-amt").empty().append(`$ ${depositAmt}`);
+        $("#rrsp-dep-amt").empty().append(`$ ${rrspDeposit}`);
+        $("#withdraw-tax-rate").empty().append(`${(avgTaxRate * 100).toFixed(2)}%)`)
+        $("#tfsa-fv").empty().append(`$ ${futureValueTFSA.toFixed(2)}`);
+        $("#rrsp-fv").empty().append(`$ ${futureValueRRSP.toFixed(2)}`);
+        $("#rrsp-value-final").empty().append(`$ ${(futureValueRRSP * avgTaxRate).toFixed(2)}`);
+        $("#tfsa-total-save").empty().append(`$ ${futureValueTFSA.toFixed(2)}`);
+        $("#rrsp-total-save").empty().append(`$ ${(futureValueRRSP - (futureValueRRSP * avgTaxRate)).toFixed(2)}`);
       }
     });
   }
